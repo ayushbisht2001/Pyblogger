@@ -1,0 +1,709 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Ultra&display=swap');
+
+
+*
+{
+   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+
+  --text_size : 20px;
+  /* --primary_color: rgb(167, 175, 175); */
+  --primary_color: #273036;
+  --secondary_color:  #170122;
+  --ternary_color:   #6e094785;
+  --croped: 
+}
+
+body{
+  background: var(--primary_color);
+  width: auto;
+  height: auto;
+  
+}
+
+.root{
+  position: relative;
+  margin-top: 40px;
+  min-height: 100vh;
+}
+
+hr{
+  display: block;
+  width: 100%;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+
+
+.leave_cmt{
+    position: relative;
+    width: 90%;
+    background-color : #b6c9c548;
+    left: 6%;   
+    margin-bottom : 40px;
+    margin-top: 5%;
+    color: var(--primary_color);
+    padding-left: 5%;
+    border-style: solid;
+    border-left-color:  var(--ternary_color);  
+    border-bottom-color:  var(--ternary_color);
+    border-right-color: transparent;
+    border-top-color: transparent;  
+   
+}
+.leave_cmt > h2{
+  font-size: var(--text_size); 
+}
+
+.form-control{
+  overflow: auto;
+  font-size: calc(var(--text_size) - 15px + 2vmin);
+} 
+
+
+.root
+{  position: relative;
+}
+.container-fluid .row  .flex-1{
+  /* position: -webkit-sticky; */
+  position: sticky;
+  top: -40px; 
+   background: var(--primary_color);
+}
+
+
+.cmt-grandparent{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin-bottom: 40px;
+  width : 100%;
+  right: 0%;
+}
+
+.cmt-buttons{
+  /* position: absolute; */
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  /* background-color:  rgb(59, 12, 49); */
+  height: 33px;
+  max-height: 33px;
+  width: 100%;
+  padding: 2px;
+
+}
+
+
+ /* Reply Button and Delete button ........................... */
+
+
+ {% load static %}
+ .cmt-buttons .R-btn {  
+  position: relative; 
+  border-radius: 10%;
+  width: auto;
+  height: 100%;
+  text-align: left;
+  min-width: 30px;
+  /* overflow: hidden; */
+  }
+
+  .cmt-buttons .R-btn button{  
+ 
+    min-width: 50px;
+  /* background-image: url("/static/reply.png/"); */
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: right;
+  text-align: start;
+  padding: 3px;
+  padding-left: 4px;
+  /* justify-content: right; */
+   
+
+  
+
+  }
+  .btn-1
+  {
+    font-size: calc(var(--text_size) - 8px);
+    height: 100%;
+    color: white;
+    text-align: center;
+    /* line-height: 1; */
+  }
+  
+  .delete-cmt{
+    position: relative;
+    border-radius: 10%;
+    width: auto;
+    height: 100%;
+    /* overflow: hidden; */
+  }
+
+  .delete-cmt button , .delete-rpy button{
+    
+    background-image: url("/static/delete.png");
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: start;
+  }
+    
+  
+   /* ........................................ */
+
+  .container-fluid .row  .flex-2 .parent-comment > div  .comment-outer{
+  position: relative;
+  /* left: 5%;  */
+  background-color:  var(--secondary_color);   
+   min-width: 100%; 
+
+}
+
+.reply-inner{
+  background: rgba(43, 46, 46, 0.801);
+}
+
+
+
+.container-fluid .row  .flex-2 .parent-comment > div > div .comment-inner{
+
+  /* background-color: aqua; */
+
+}
+
+.container-fluid .row  .flex-2 .parent-comment > div > div .comment-inner > div > div .comment-style{
+  /* background:  var(--ternary_color); */ 
+  position: relative;
+  border-radius: 5px;
+  width: 100%;
+  height: auto;
+  max-height: 220px;
+  overflow: auto;
+  padding-left: 3%;
+  /* background-color: yellow; */
+  font-size: 90%;
+}
+
+
+.container-fluid .row  .flex-2 .parent-comment > div > div .comment-inner > div > div .cmt-buttons .R-btn {
+margin-right: 1%;
+background:  var(--ternary_color);
+/* max-width : 90px;
+height: 50px; */
+}
+
+.reply-style
+{ position: relative;
+  background-color: transparent;
+  /* background-color:rgba(7, 54, 54, 0.425);  */
+  margin-left : 5%;
+  /* top: 40%; */
+  padding: 2%;
+  margin-top: 3%;
+  /* margin-bottom: 20px; */
+  border-style: none;  
+  /* background-color: rgba(50, 51, 51, 0.425); */
+}
+
+.reply-section {
+  /* position: relative; */
+  background-color: transparent;
+  padding: 0%;  
+  /* border-radius: 5px; */
+  /* top: 10%; */
+}
+
+
+
+.reply-inner {
+  background:  var(--ternary_color);
+  padding-left: 3%;
+  height: auto;
+  max-height: 220px;
+  overflow: auto;
+  font-size: 90%;  
+  border-radius: 5px;
+}
+
+.reply-style-inner {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  background-color: transparent;
+  /* background:  var(--ternary_color); */
+  padding-left: 3%;  
+  /* margin-bottom: 10%; */
+}
+
+.delete-rpy{
+  position: relative;
+  /* background-color: black !important; */
+  border-radius: 10%;
+  width: auto;
+  height: 100%;
+  /* overflow: hidden; */
+}
+
+.delete-rpy button{
+  font-size: 70%;
+  height: 100%;
+  line-height: 1;  
+  min-height: 30px;
+}
+
+
+.root .row .flex-1 {
+  background: var(--primary_color);
+  /* background: rgb(50, 51, 51); */  
+  border-radius: 10px;
+  position: relative;
+}
+
+.flex-1-inner{
+  background: var(--primary_color);
+  margin-top: 60px;
+  height: 300px;
+}
+
+.root .row .flex-1 > div .feedback-parent{
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: center;
+      /* justify-content: flex-end; */
+      align-content: flex-end;
+      position: relative;
+      /* top: -10%; */
+      left: 0%;
+      height: auto;
+      width: 100%;
+      z-index : -255;
+      overflow: hidden;
+      
+  }
+
+
+  .errorlist{
+    list-style: none;
+    height: auto;
+    padding: 2px !important;
+    font-size: 10px;
+  }
+
+
+
+
+/* LIKE BUTTON  ..............................................*/
+
+  .like{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* background-color: blue; */
+    flex-wrap: wrap;
+    margin-bottom : 60px;
+  }
+
+  .like-inner-flex-1
+{
+    position: relative;
+    width: 100px;
+    height: 70px;
+    background-image: url('https://abs.twimg.com/a/1446542199/img/t1/web_heart_animation.png');
+    background-position: right; 
+    filter: grayscale(100%);
+    /* background-size: 2800% 130%; */
+    background-size : 2900%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    /* background-color: #000000; */
+
+}
+
+.like-btn{
+  outline: 0;
+  outline-color: transparent;
+  position: absolute;
+  background-color: transparent;
+  width: 50%;
+  height: 50px;
+  border-radius: 50px;
+  left: 25%;
+  top: 13%;
+  border-style:solid;
+  border-color: #d6298080;
+  z-index : 1;
+  cursor: pointer;
+}
+
+.like-btn:hover{
+  background-color: #d629801a;
+  outline: 0;
+  filter: grayscale(0%);
+}
+.like-inner-flex-1:hover{
+  background-position: right;  
+  filter: grayscale(0%);
+}
+
+.like-animate{
+  animation: heart .8s steps(28) 1;
+}
+
+@keyframes heart {
+  from {background-position:left;}
+   to { background-position:right;}
+  }
+
+.like-inner-flex-2
+{ position: relative;
+  width: 100px;
+  height: auto;
+  color: white;
+  text-align: center;
+}
+
+/* .................................................................. */
+
+
+
+
+/* DISLIKE BUTTON .................................... */
+
+
+.dislike{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: relative;
+    /* background-color: rgb(12,233,222); */
+    left: 0%;
+}
+
+
+.dislike-inner-flex-1{
+    position: relative;
+    width: 100px;
+    height: 70px;
+    background-image: url("/static/cactus.png");
+    background-repeat: no-repeat;
+    background-size: 35px 35px;
+    background-position: center;
+    cursor: pointer;
+    filter: grayscale(100%);
+    z-index: 3;
+    /* background-color: white; */
+}
+.dislike-inner-flex-1:before{
+    content: "";
+    position: absolute;
+    /* width : 50px; */
+    /* height: 50px; */
+    width: 50%;
+    height: 50px;
+    /* left: 25px; */
+    /* top: 9px; */
+    left: 25%;
+    top: 15%;
+    border-radius: 50%;
+    background-color: transparent;
+
+}
+
+.dislike-inner-flex-1:after{
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border-style : solid;
+    border-color: rgba(8, 109, 38, 0);
+    top: 15%;
+    left: 25%;
+    transition:0.5s;
+
+}
+.dislike-btn{
+  position: absolute;
+  background-color: transparent;
+  display: block;
+  width: 50%;
+  height: 50px;
+  border-radius: 50%;
+  left: 25%;
+  top: 15%;
+  border-style: solid;
+  border-color: rgba(8, 109, 38, 0.562);
+  z-index : 1;
+  cursor: pointer;
+  outline-style: none;
+
+}
+
+.dislike-btn:hover{
+  outline-style: none;
+background-color:rgba(8, 109, 38, 0.199);
+}
+
+
+.dislike-inner-flex-1:hover
+{  filter: grayscale(0%);
+
+}
+
+.dislike:hover .dislike-inner-flex-1:before{
+background-color:rgba(8, 109, 38, 0.199);
+
+}
+.dislike:hover  .dislike-inner-flex-1:after
+{    transform: scale(2);
+    border-color: rgba(8, 109, 38, 0.199);
+}
+
+
+.dislike-inner-flex-2
+{ position: relative;
+    width: 100px;
+  /* background-color: #030f0daf; */
+  text-align: center;
+  color: white;
+}
+
+.animated{
+animation: cactus;
+animation-duration: 1.2s;
+/* background-color: blueviolet; */
+}
+
+.cactus-on{
+    background-color: rgba(157, 250, 192, 0.678);
+}
+
+@keyframes cactus{
+
+    0%{
+        transform: rotate(0deg);
+    }
+    15%{
+        transform: rotate(70deg);
+    }
+    30%{
+        transform: rotate(30deg);
+    }
+45%{
+    transform: rotate(100deg);
+
+}
+60%{
+    transform: rotate(30deg);
+}
+75%{
+    transform: rotate(100deg);
+
+}
+100%{
+    transform: rotate(0deg);
+}
+}
+
+
+/* ............................................................. */
+.logo{
+  position: relative;
+  top: 0px;
+  width: 100px;
+  height: 45px;
+  filter: grayscale(0%);
+}
+
+.container-fluid .row  .flex-3{
+  display: grid;
+  /* position: -webkit-sticky; */
+  position: sticky;
+  /* margin-top: -40px;
+  margin-bottom: 40px; */
+  background: var(--primary_color);  
+
+}
+
+.std-text{
+
+  font-size: 2vmin;
+}
+
+
+
+
+
+@media (max-width: 991px)
+{
+
+
+.root .row .flex-1 > div .feedback-parent
+{
+  flex-direction: row;
+  align-content: flex-start;
+  /* background-color: blue; */
+  height: 50px;
+  bottom: 0;
+  border-style: solid;
+  border-top-color: rgba(146, 151, 155, 0.781);
+  border-right-color: transparent;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  
+  box-shadow : inset 0 -3em 3em rgba(0,0,0,0.1),
+}
+
+.root .row .flex-1
+{
+
+  position: sticky !important;
+  overflow: hidden;
+  height: 50px;
+  width : 100%;
+  bottom: 0%;
+  border-radius: 0px;
+  /* background-color: green; */
+}
+
+
+.flex-1-inner{
+position: sticky !important;
+margin-top: 0px;
+/* background-color: green !important; */
+
+}
+
+.like{
+  flex-direction: row;
+  margin-bottom: 0px;
+  margin-right: 10px;
+  
+}
+.dislike{
+  flex-direction: row;
+  }
+
+.like-btn{
+  width: 35px;
+  height: 35px;
+  left: 23%;
+}
+
+.dislike-btn{
+  width: 40px;
+  height: 40px;
+  left: 19%;
+  top: 10%;
+}
+
+
+.like-inner-flex-1, .dislike-inner-flex-1{
+
+  width: 60px;
+  height: 50px;
+}
+
+.like-inner-flex-2 , .dislike-inner-flex-2{
+  width: 30px;
+  line-height: 3;
+}
+
+.dislike-inner-flex-1:before{
+  width: 50%;
+  height: 30px;
+  left: 26%;
+  top: 20%;
+}
+
+.dislike-inner-flex-1:after{
+    width: 50%;
+    height: 30px;
+    border-radius: 50%;
+    border-color: rgba(8, 109, 38, 0);
+    left: 26%;
+    top: 20%;
+}
+
+.container-fluid .row  .flex-3{
+  position: sticky;
+  max-width: 100%;
+  background-color: var(--primary_color);;
+  /* background-color: pink; */
+}
+
+}
+
+@media (min-width: 778px ) {
+
+  .container-fluid .row  .detail_profile{
+    /* position: -webkit-sticky; */
+    background: var(--primary_color);
+    position: sticky;
+    top: 0;
+    margin-left: 20px;
+  }
+  
+  .flex-1-inner{
+    position: sticky;
+    top: 0;
+  }
+  
+  }
+  
+@media (max-width: 760px){
+
+    .container-fluid .row  .flex-2 .parent-comment > div  .comment-outer{
+      /* left: 2%; */
+      min-width: 100%;
+    }
+    .std-text{
+
+      font-size: 2.4vw;
+    }
+    
+  }
+  
+  @media (max-width: 371px){
+
+    .std-text{
+      font-size: 4.4vw;
+    }
+    .leave_cmt > h2{
+      font-size: calc(var(--text_size) - 3px);
+    }
+    
+  }
+  
+
+
+@media (min-width:996px)
+{
+  .container-fluid .row  .flex-3{
+    display: grid;
+    justify-content: center; 
+    background: var(--primary_color);
+  
+  }
+}
+
+@media (min-width: 1200px)
+{
+  .container-fluid .row .flex-3{
+    position: relative;
+    left: 0px;
+
+  }
+}

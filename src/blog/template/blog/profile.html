@@ -1,0 +1,27 @@
+<div class = "row">
+<div class="card" style="width: 18rem;">
+  {% if user_obj.img %}
+  <img class="card-img-top" src="..." alt="Card image cap">
+  {% else %}
+<img class = "card-img-top" src "" alt = "avatar">
+  {% endif %}
+  <div class="card-body">
+  <h5 class="card-title">{{blog_post.user}}</h5>
+{% if user_obj.description %}
+    <p class="card-text">software engineer, Django</p>
+{% endif %}
+  </div>
+</div>
+</div>
+
+<div class = "row profile">
+<div class="card" style="width: 18rem;">
+<h2 clas="text-primary"> More from {{blog_post.user}} .. </h2>
+{% for post in blog_post.user.BlogPost %}
+<p> post.title</p>
+{% endfor %}
+<div class="card-body">
+</div>
+</div>
+
+</div>

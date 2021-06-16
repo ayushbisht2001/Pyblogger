@@ -1,0 +1,35 @@
+.h2{
+position : relative;
+margin-left : 10%;
+margin-bottom : 40px;
+}
+
+.comment-style{
+  padding : 20px;
+}
+
+.reply-style{
+margin-left : 25%;
+
+}
+#chk{
+  color : "black";
+}
+.divC{
+background : rgb(34,34,34);
+}
+
+.profile{
+
+margin-top : 20px;
+
+}
+
+
+
+/* profile page */
+
+#profile-style input{
+  display : block;
+
+}

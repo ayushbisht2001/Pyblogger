@@ -1,0 +1,57 @@
+<!DOCTYPE html5>
+<html>
+    <head>
+        <title>poop emojis</title>
+        <link rel="stylesheet" href="dislike.css" >
+    </head>
+
+    <body>
+
+        <div class="container">
+            <div class="toggle"></div>
+            <div class="row1">      
+            </div>
+           
+        </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+     
+     <script>
+   
+            $(".row1").on('click touchstart',function(){             
+            
+                $(this).toggleClass("animated");  
+
+            }); 
+
+            $(".row1").on('animationend', function(){
+
+                $(this).removeClass('animated'); 
+            });
+       
+            var flag = 1;
+            $(".row1").click(function(){
+
+                console.log(flag);
+                if(flag){
+
+                    $(".row1").css({"filter":"grayscale(0%)"});
+                        flag = 0;
+                        console.log(flag);
+                }
+                else
+                { 
+                    flag=1;
+                    $(".row1").css({"filter": "grayscale(100%)"});
+                }
+            });
+
+     </script>   
+
+    </body>
+
+
+
+</html>

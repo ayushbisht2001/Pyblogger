@@ -1,0 +1,77 @@
+.login-root{
+    position: relative;
+    height: 500px;
+}
+
+.login-parent{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    position: absolute;
+    width: 30%;
+    background-color: rgb(218, 199, 235);
+    left: 35%;    
+    padding: 3%;
+    /* top: 35%; */
+    border-radius: 10px;   
+
+}
+
+.login-parent > div{
+width: 100%;
+margin-bottom: 10px;
+}
+
+.login-inner-btn{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding-top: 10px;
+    
+}
+.login-inner-btn > div .btn{
+    width : 100%;
+    text-align: center;
+}
+.login-inner-btn > div{
+    margin : 5px;
+}
+
+
+.regis-root{
+    position: relative;
+    height: auto;   
+}
+
+.regis-root .card{
+position: relative;
+padding: 3%;
+color: white;
+/* top :5%; */
+width: 40%;
+left: 30%;
+
+}
+
+@media (max-width: 1009px){
+
+    .login-parent , .regis-root .card{
+      
+        width: 90%;
+        left: 5%;    
+    }
+
+    .login-inner-btn > div .btn , .google-btn{
+        font-size: 13px;
+        /* text-align: left;    */
+        /* padding: 2px;      */
+    }
+}
+
+@media (max-width: 300px){
+
+    .login-parent , .regis-root .card{      
+        width: 100%;
+        left: 0%;    
+    }
+
+}

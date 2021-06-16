@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block head_title %}
+login
+{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% load socialaccount %}
+
+<div class="container-fluid m-0 p-1 mt-5 ">
+<div class="row align-items-center">
+  <div class="col-12 justify-content-center ">
+  <div class="container login-root  ">
+    <form method = "POST"  action=".">
+      {% csrf_token %}
+      
+      <div class="login-parent  shadow-lg p-3 bg-dark ">
+        <div>
+          <label class="text-light" for="form-control">Username</label>
+          <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter email" name="username">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div>
+          <label for="form-control" class="text-light">Password</label>
+        <input type="password" class="form-control" placeholder="Password" name="password">
+        </div>       
+        <div class="login-inner-btn" >
+          <div >
+          <button type = "submit" class=" btn btn-success">Login</button>
+          </div>
+          <div>
+            <a href="/register/" class="btn btn-info "  role = "button" >Register</a>
+          </div>
+        </div>
+        <!-- <div ><a class = "btn btn-primary btn-block google-btn"  href="{% provider_login_url 'google' %}" role="button" disabled = "true" >Google</a></div> -->
+
+        <div ><a class = "btn btn-primary btn-block google-btn"  role="button" >Google</a></div>
+        <div > <a class = "text-primary"> Forget Password </a></div>           
+        <!-- <div > <a href="/forget/"> Forget Password </a></div>            -->
+        
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+{% endblock %}

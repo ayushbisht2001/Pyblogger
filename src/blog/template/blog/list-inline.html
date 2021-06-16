@@ -1,0 +1,35 @@
+
+<div class = 'col-md-12 mb-1'>
+
+ <div class = "card blog-card shadow  mb-1 bg-white  {% if not blog_post.publish_date %} border border-light text-dark {% endif %}  ">
+
+   
+     <div class="card-body p-0">
+        {% if blog_post.image %}
+         <img src = "{{ blog_post.image.url }} " class ='card-img blog-img {% if truncate %}  blog-img-trunc {% endif %}' />
+
+         {% endif %}
+            <h1  class= "card-title blog-heading"> {{ blog_post.title }}  </h5>
+
+            <div class = "blog-body {% if truncate %}  blog-body-trunc {% endif %}">
+                <small>{{ blog_post.publish_date }}</small>
+                <br>
+                <p class="text-muted"><strong>- By {{blog_post.profile.username}}</strong></p>              
+                <hr style="margin: -10px"/>
+                {% if truncate %}
+                   <p> {{ blog_post.content | linebreaks | truncatewords:30|cut:"<br>"}} </p>                
+                {% else %}
+                    <p>{{ blog_post.content | linebreaks }}</p>
+                 {% endif %}
+
+                 {% if not detail %}
+                  {% if not blog_post.publish_date %}Draft {% endif %}
+                  <a href = "{{ blog_post.get_absolute_url }}">View</a>
+                  {% endif %}
+
+            </div>   
+
+     </div>
+   
+     </div>
+ </div>
