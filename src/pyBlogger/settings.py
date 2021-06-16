@@ -26,7 +26,7 @@ SECRET_KEY = '0^d)pltphnfee0^v1^naoaxqpx*k6=pbum%9!x4d4!=ra5h#vm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 LOGIN_URL = "/login/"
 # Application definition
 
@@ -55,6 +55,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -168,3 +169,9 @@ EMAIL_USE_TLS = True
 EMAIL_PORT =   587
 EMAIL_HOST_USER = 'XYZ@gmail.com'
 EMAIL_HOST_PASSWORD = 'XYZ'
+
+
+import dj_database_url
+
+prod_db = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
