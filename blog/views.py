@@ -16,7 +16,7 @@ from pathlib import Path
 import os
 
 BASE = Path(__file__).resolve().parent.parent
-CDN = os.path.join(os.path.dirname(BASE),'static_cdn_test')
+CDN = os.path.join('static_cdn_test')
 MEDIA =  os.path.join(CDN,'media')
 
 
