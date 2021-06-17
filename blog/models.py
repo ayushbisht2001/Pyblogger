@@ -63,7 +63,7 @@ class BlogPostManager(models.Manager):
 class BlogPost(models.Model):  #bloglist_set ---> queryset
     # id = IntegerField()
     user = models.ForeignKey(User,on_delete=models.CASCADE, default=1)
-    profile = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     image = models.ImageField(upload_to='image/', blank=True, null=True)
     title = models.CharField(max_length=50)
     slug = models.SlugField(unique=True)  # hello world --> hello-world

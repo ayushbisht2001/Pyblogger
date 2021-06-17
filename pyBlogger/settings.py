@@ -45,8 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
+    # 'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.google',
     'captcha',
     'UserProfile',
     'django_forms_bootstrap',
@@ -101,17 +101,17 @@ AUTHENTICATION_BACKENDS = (
  )
 
 
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        }
-    }
-}
+# SOCIALACCOUNT_PROVIDERS = {
+#     'google': {
+#         'SCOPE': [
+#             'profile',
+#             'email',
+#         ],
+#         'AUTH_PARAMS': {
+#             'access_type': 'online',
+#         }
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -166,12 +166,12 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = "/" # otherwise it is redirected to the default page   " http://127.0.0.1:8000/accounts/profile/ "
 LOGOUT_REDIRECT_URL = "/"
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST =    'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT =   587
-EMAIL_HOST_USER = 'XYZ@gmail.com'
-EMAIL_HOST_PASSWORD = 'XYZ'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST =    'smtp.gmail.com'
+# EMAIL_USE_TLS = True
+# EMAIL_PORT =   587
+# EMAIL_HOST_USER = 'XYZ@gmail.com'
+# EMAIL_HOST_PASSWORD = 'XYZ'
 
 
 import dj_database_url

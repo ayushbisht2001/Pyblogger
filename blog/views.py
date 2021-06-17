@@ -113,7 +113,9 @@ def blog_post_detail_view(request,slug):
     # 1 object --> detail view
     obj = get_object_or_404(BlogPost, slug=slug)    # id  :  should be an integer value
     #comment = Comment.objects.create(post = obj , name = str(request.user), body = content)
-    profile = get_object_or_404(Profile, username=str(obj.user))
+    print(obj.user)
+    profile = get_object_or_404(Profile, username=str(obj.user.username))
+    print(profile)
     cf = CommentForm()
     rf= ReplyForm()
     template_name = "blog/detail.html"

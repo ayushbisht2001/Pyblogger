@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import get_object_or_404
 from blog.models import *
 from django.contrib.auth.models import User
 from django.dispatch import receiver
@@ -7,7 +8,7 @@ from django.db.models.signals import pre_delete, post_save, post_delete
 # User = settings.AUTH_USER_MODEL
 
 class Profile(models.Model):
-    user          =  models.ForeignKey(User, blank=True,null=True,on_delete=models.CASCADE)
+    user          =  models.ForeignKey(User , on_delete=models.CASCADE)
     user_fname    =  models.CharField(max_length=12, blank=True)
     user_lname    =  models.CharField( max_length=12,null=True,blank=True)
     username      =  models.CharField(max_length=12,blank=True, null=True)
@@ -40,5 +41,9 @@ class Profile(models.Model):
 @receiver(post_save, sender=User)
 def create_profile(sender, instance=None, created=False, **kwargs):
     if created:
-        profile = Profile(user = instance)
+        profile = Profile(user = instance, username=instance.username)
+        profile.save()
+    else:
+        profile = get_object_or_404(Profile, user=instance)
+        profile.username = instance.username
         profile.save()
