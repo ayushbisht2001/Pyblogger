@@ -17,7 +17,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 PARENT_DIR =  Path(__file__).resolve().parent
 
-# print(BASE_DIR, "\n\n hello", PARENT_DIR)
+print(BASE_DIR, "\n\n hello", PARENT_DIR)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 

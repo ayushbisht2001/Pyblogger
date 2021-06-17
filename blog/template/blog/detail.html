@@ -5,8 +5,12 @@
 {% block content %}
 {% include 'blog_css.html' %}
 
+
 {% load static %}
-<script type="module" src = "{% static 'JS/detail.js' %}"></script>
+<!-- <script type="module" src = "{% static 'JS/detail.js' %}"></script> -->
+
+
+
 
 <div class="container-fluid m-0 mt-5 p-0">
 <div class = "row">
@@ -30,7 +34,7 @@
         <div class = 'col-12 col-md-12 p-2 '>          
               <div class = "card border-light mb-12 comment-outer p-2 shadow blog-card">
                 <div class="leave_cmt">
-                  <h2 >Leave your comment!</h2>                
+                  <h2 class = "text-light">Leave your comment  !</h2>                
                 </div>  
                 <div class="card-body comment-inner p-1 p-md-3">
                         <div id="comments_section">
@@ -79,7 +83,7 @@
                             </div>
                             <div id="temp">
                                   {% if not object.comment %}
-                                    <strong class="text-secondary " > No comments yet...</strong>
+                                    <strong class="text-light" > No comments yet...</strong>
                                   {% endif %}
                             </div>
                         </div>
@@ -128,12 +132,8 @@
                   <p id = "dislikes"> {{ object.total_dislikes }}</p>
               </div>
             </div>
-
-
             <div class="wishlist">
-
             </div>
-
         </div>
 
   </div>
@@ -147,7 +147,34 @@
 {% block javascript %}
 <!-- see this for url and reverse url : https://docs.djangoproject.com/en/3.1/topics/http/urls/ -->
 
+<!-- <script >
+
+// $(document).ready(function () {
+var cmtURL = '{{object.getCommentUrl}}';
+var likeURL = "{% url 'blog_likes' object.slug  %}";
+var dislikeURL = "{% url 'blog_dislikes' object.slug  %}";
+var replyURL = "{% url 'blog_reply' object.slug %}" ;
+var getReplyURL = "{% url 'get_replies' object.slug %}";
+var delCmtURL = "{% url 'del_comments' object.slug %}";
+var delReplyURL = "{% url 'del_replies' object.slug %}";
+var numOfCmt = '{{ object.number_of_comments|pluralize }}';
+var requestUser = "{{request.user}}";
+// var replyForm = '{{ reply_form }}';
+// var csrfToken = '{{ csrf_token }}';
+
+</script>
+
+
+<script type="module" src = "{% static 'JS/detail.js' %}">
+
+</script> -->
+
+
+
 <script>
+
+var cmtURL = '{{object.getCommentUrl}}';
+
 
   var like_flag;
   var dislike_flag;
@@ -357,7 +384,7 @@
             );  } }
             if(count == 0)
             $(div_t).prepend(
-            `<p id = "no_reply${replies}"><strong>No replies</strong></p>`
+            `<p id = "no_reply${replies}"><strong class="text-light">No replies ..... </strong></p>`
             );
 
             

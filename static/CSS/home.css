@@ -39,42 +39,42 @@ body{
 @keyframes carousel{
 
     10%{
-        background: linear-gradient(90deg, rgb(180, 180, 180), rgba(59, 230, 215, 0.658)), url('/static/Themes/C.png');
+        background: linear-gradient(90deg, rgb(180, 180, 180), rgba(59, 230, 215, 0.658)), url('/static/Themes/theme5.jpg');
         background-repeat: no-repeat;
         background-size: 100% 100%;     
         background-attachment: fixed;
     }
 
     30%{
-        background: linear-gradient(90deg, rgb(22, 22, 22), rgba(29, 32, 212, 0.452)), url('/static/Themes/Cpp.png');
+        background: linear-gradient(90deg, rgb(22, 22, 22), rgba(29, 32, 212, 0.452)), url('/static/Themes/theme6.jpg');
         background-repeat: no-repeat;
         background-size: 100% 100%;     
         background-attachment: fixed;
     }
 
      50%{
-        background: linear-gradient(45deg, rgba(211, 168, 88, 0.849), rgba(24, 26, 25, 0.747)), url('/static/Themes/js.png');
+        background: linear-gradient(45deg, rgba(211, 168, 88, 0.849), rgba(24, 26, 25, 0.747)), url('/static/Themes/theme7.jpg');
         background-size: 100% 100%;
         background-repeat: no-repeat;
         background-attachment: fixed;
     }
 
      70%{
-        background: linear-gradient(120deg, rgba(211, 168, 88, 0.849), rgba(24, 26, 25, 0.747)), url('/static/Themes/java.png');
+        background: linear-gradient(120deg, rgba(211, 168, 88, 0.849), rgba(24, 26, 25, 0.747)), url('/static/Themes/theme8');
         background-size: 100% 100%;
         background-repeat: no-repeat;        
         background-attachment: fixed;
     }
     
     90%{
-        background: linear-gradient(180deg, rgba(24, 23, 23, 0.938), rgba(3, 70, 37, 0.918)), url('/static/Themes/python.jpg');
+        background: linear-gradient(180deg, rgba(24, 23, 23, 0.938), rgba(3, 70, 37, 0.918)), url('/static/Themes/theme9.jpg');
         background-size: 100% 100%;
         background-repeat: no-repeat;        
         background-attachment: fixed;   
     }
 
     100%{
-        background: linear-gradient(90deg, rgba(58, 170, 136, 0.658), rgba(181, 62, 236, 0.658)), url('/static/theme4.jpg');
+        background: linear-gradient(90deg, rgba(58, 170, 136, 0.658), rgba(181, 62, 236, 0.658)), url('/static/Themes/theme10.jpg');
         background-size: 100% 100%;
         background-repeat: no-repeat;        
         background-attachment: fixed;

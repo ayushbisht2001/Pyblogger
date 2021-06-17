@@ -30,7 +30,7 @@ class CommentForm(forms.ModelForm):
     attrs ={
         'class':'form-control',
         'placeholder':'Comment here !',
-        'rows':5
+        'rows':5,
     }))
     class Meta:
         model = Comment
@@ -44,7 +44,7 @@ class ReplyForm(forms.ModelForm):
         'class':'form-control',
         'placeholder':'Comment here !',
         'rows':4,
-        'cols':50
+        'cols':50,
     }))
     class Meta:
         model = Reply

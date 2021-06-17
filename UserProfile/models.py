@@ -1,11 +1,13 @@
 from django.db import models
 from blog.models import *
 from django.contrib.auth.models import User
+from django.dispatch import receiver
+from django.db.models.signals import pre_delete, post_save, post_delete
 # Create your models here.
 # User = settings.AUTH_USER_MODEL
 
 class Profile(models.Model):
-    # user          =  models.ForeignKey(User, blank=True,null=True,on_delete=models.SET_NULL)
+    user          =  models.ForeignKey(User, blank=True,null=True,on_delete=models.CASCADE)
     user_fname    =  models.CharField(max_length=12, blank=True)
     user_lname    =  models.CharField( max_length=12,null=True,blank=True)
     username      =  models.CharField(max_length=12,blank=True, null=True)
@@ -31,3 +33,12 @@ class Profile(models.Model):
     def get_avatar(self):
         s = str(self.user_avatar)
         return s[6:]+"/"
+
+
+
+
+@receiver(post_save, sender=User)
+def create_profile(sender, instance=None, created=False, **kwargs):
+    if created:
+        profile = Profile(user = instance)
+        profile.save()

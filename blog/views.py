@@ -254,22 +254,22 @@ def blog_post_dislikes(request,slug):
 
 """ Generic way for implementing Detail View
 """
-class BlogPostDetailView(DetailView):
-    model = BlogPost
+# class BlogPostDetailView(DetailView):
+#     model = BlogPost
 
-    def get_context_data(self, **kwargs):
-        data = super().get_context_data(**kwargs)
-        post = Comment.objects.all().order_by('-comment_date')
-        data['comment_set']  = post
-        data['comment_form'] = CommentForm(instance=self.request.user)
-        return data
+#     def get_context_data(self, **kwargs):
+#         data = super().get_context_data(**kwargs)
+#         post = Comment.objects.all().order_by('-comment_date')
+#         data['comment_set']  = post
+#         data['comment_form'] = CommentForm(instance=self.request.user)
+#         return data
 
-    def post(self, request, *args, **kwargs):
-        new_comment =Comment(body=request.POST.get('body'),
-                                  name=self.request.user,
-                                  post=self.get_object())
-        new_comment.save()
-        return self.get(self, request, *args, **kwargs)
+#     def post(self, request, *args, **kwargs):
+#         new_comment =Comment(body=request.POST.get('body'),
+#                                   name=self.request.user,
+#                                   post=self.get_object())
+#         new_comment.save()
+#         return self.get(self, request, *args, **kwargs)
 
 
 def blog_post_update_view(request,slug):

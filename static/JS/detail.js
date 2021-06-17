@@ -1,4 +1,4 @@
-import  './jquery.min.js';
+import   './jquery.min.js';
 
 
 $(document).ready(function () {
@@ -7,6 +7,31 @@ console.log("hello world")
 
 var like_flag;
 var dislike_flag;
+
+if(localStorage.getItem("like") == 1){
+          $('.like-btn').css({"background-color": "#d629801a" , "outline": "none"});
+        $('.like-inner-flex-1').css({"background-position": "right",  "filter": "grayscale(0%)"});
+
+        } else {
+        $('.like-btn').css({"background-color": "transparent", "outline": "none"});
+        $('.like-inner-flex-1').css({"background-position": "right",  "filter": "grayscale(100%)"});
+
+        }
+
+
+if(localStorage.getItem("dislike") == 1){
+
+  $(".dislike-inner-flex-1").css({"filter":"grayscale(0%)"});
+  $(".dislike-btn").css({"outline": "none", "background-color":"rgba(8, 109, 38, 0.199)"});
+
+  }
+  else
+  {                  
+  $(".dislike-inner-flex-1").css({"filter": "grayscale(100%)"});
+  $(".dislike-btn").css({"outline": "none", "background-color":"transparent"});
+  }
+
+
 
 var dict = [];
 $("#comment-form").submit(function (e)
@@ -19,7 +44,7 @@ $("#comment-form").submit(function (e)
     // make POST ajax call
   $.ajax({
       type: 'POST',
-      url: '{{object.getCommentUrl}}',
+      url: cmtURL,
       data: serializedData,
       success: function (response) {
           // on successfull creating object
@@ -58,7 +83,7 @@ $("#comment-form").submit(function (e)
                    <div class = "reply-style-inner" id="reply_box${id}"></div></div>
                </div>`
           );
-          $("#comNum").html(`<p>${num_of_comments} Comment{{ object.number_of_comments|pluralize }} </p>`).addClass("text-secondary");
+          $("#comNum").html(`<p>${num_of_comments} Comment ${numOfCmt} </p>`).addClass("text-secondary");
       }   })  })
 
 
@@ -67,7 +92,7 @@ $("#likes-form").submit(function (e)
   var serializedData = $(this).serializeArray();
   $.ajax({
       type: 'POST',
-      url: "{% url 'blog_likes' object.slug  %}",
+      url: likeURL,
       data: serializedData,
       success: function (response) {
         var like_count = JSON.parse(response["like"]);
@@ -80,6 +105,11 @@ $("#likes-form").submit(function (e)
       }else
       $(".like-inner-flex-1").toggleClass('like-animate'); 
       
+
+      localStorage.setItem("like", like_flag);
+
+
+
       if(like_flag){
           $('.like-btn').css({"background-color": "#d629801a" , "outline": "none"});
         $('.like-inner-flex-1').css({"background-position": "right",  "filter": "grayscale(0%)"});
@@ -103,7 +133,7 @@ $("#likes-form").submit(function (e)
       var serializedData = $(this).serializeArray();
       $.ajax({
           type: 'POST',
-          url: "{% url 'blog_dislikes' object.slug  %}",
+          url: dislikeURL,
           data: serializedData,
           success: function (response) {
 
@@ -120,6 +150,8 @@ $("#likes-form").submit(function (e)
 
                    $(this).removeClass('animated');
             });
+
+            localStorage.setItem("dislike", dislike_flag);
 
             if(dislike_flag){
 
@@ -148,10 +180,10 @@ $("#likes-form").submit(function (e)
 
       $.ajax({
         type: 'POST',
-        url: "{% url 'blog_reply' object.slug %}",
+        url: replyURL,
         data: {"id": replies},
         dataType: "json",
-        headers: {"X-CSRFToken":'{{ csrf_token }}'},
+        headers: {"X-CSRFToken":csrfToken},
         success: function(response) {
           var dt = JSON.parse(response["data"]);
           var count = Object.keys(dt).length;
@@ -160,7 +192,7 @@ $("#likes-form").submit(function (e)
           $(rep).remove();
           $(cond).remove();
           // $("#no_reply"+replies).remove();
-          var req_user = "{{request.user}}";
+          var req_user = requestUser;
         for(var data in dt)
         {$(div_t).append(
               `<dic class = "card reply-section mt-5 p-0"  id = "reply-${replies}-${dt[data]["id"]}" >
@@ -194,7 +226,7 @@ $("#likes-form").submit(function (e)
               `    <form method="POST" id = "reply-form${replies}" onsubmit = "event.preventDefault();">
                     {% csrf_token %}
                     <div class="form-group">
-                      {{ reply_form }}
+                      ${replyForm}
                       <button class="btn btn-info mt-1 btn-1" type="submit" style="max-width: 18rem;"  onclick = "ReplyFunc(${replies})">reply  <i class="fas fa-comments"></i>
                       </button>
                     </div></form>`
@@ -221,10 +253,10 @@ function ReplyFunc(id)
  serializedData.push({"name" : "replyto" , "value" : parseInt(id)});
 $.ajax({
     type: 'POST',
-    url: "{% url 'get_replies' object.slug %}",
+    url: getReplyURL,
     data: serializedData,
     dataType: "json",
-    headers: {"X-CSRFToken":'{{ csrf_token }}'},
+    headers: {"X-CSRFToken": csrfToken},
     success: function (response) {
 
         $("#reply-form"+id).trigger('reset');
@@ -264,14 +296,14 @@ function delCmtBtn(btn_ID){
 console.log("hey");
 $.ajax({
 type: 'POST',
-url: "{% url 'del_comments' object.slug %}",
+url: delCmtURL,
 data: {"id" : btn_ID},
 dataType: "json",
-headers: {"X-CSRFToken":'{{ csrf_token }}'},
+headers: {"X-CSRFToken":csrfToken},
 success : function(response) {
 var num_of_comments = JSON.parse(response["num_of_comments"]);
 $("#div-"+btn_ID).remove();
-$("#comNum").html(`<p>${num_of_comments} Comment{{ object.number_of_comments|pluralize }} </p>`).addClass("text-secondary");
+$("#comNum").html(`<p>${num_of_comments} Comment${numOfCmt} </p>`).addClass("text-secondary");
 // $("#reply_count"+btn_ID).html(`<strong class = "text-secondary" id = "reply_count${btn_ID}">${num_of_comments} Reply{{comment.number_of_reply|pluralize}} </strong>`);
  
 
@@ -282,10 +314,10 @@ function delReplyBtn(cmt, rep){
 console.log("hey",rep);
 $.ajax({
 type: 'POST',
-url: "{% url 'del_replies' object.slug %}",
+url: delReplyURL,
 data: {"id" : cmt , "id_reply" : rep},
 dataType: "json",
-headers: {"X-CSRFToken":'{{ csrf_token }}'},
+headers: {"X-CSRFToken": csrfToken},
 success : function(response) {
 var num_of_replies= JSON.parse(response["num_of_reply"]);
 
