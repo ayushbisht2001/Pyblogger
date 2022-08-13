@@ -1,0 +1,49 @@
+
+    <div class="post-parent">
+        <div class="post-flex-1 position-relative" >
+        {% if post.image %}        
+        <div class="thumbnail">            
+            <img src = "{{ post.image.url }} " alt="thumbnail" class="left">        
+        </div>
+        {% endif %}        
+        <div class="right">
+            
+            <h1>{{post.title}}</h1>
+            <small>{{post.publish_date}}</small>
+            <hr/>
+            <p>{{ post.content | linebreaks | truncatewords:30|cut:"<br>"}}</p>
+        </div>
+    </div>  
+    <div class="position-relative post-flex-2">     
+        <ul>
+            <a href="" ><li><i class="far fa-eye  fd-sm">seen</i></li></a>
+            <a href="" id="likebtn-{{post.pk}}" onclick="likefun({{post.pk}})"><li><i class="far fa-heart fd-sm ">like</i></li></a>
+            <a href="" id="dislikebtn-{{post.pk}}" onclick="dislikefun({{post.pk}})"><li><i class="far fa-envelope fd-sm ">save</i></li></a>            
+        </ul>    
+        <a href="{{ post.get_absolute_url }}">
+            <div class="fabi"> 
+                <i  class="fa fa-arrow-right fa-2x "></i>
+            </div>
+        </a>
+    </div>
+    </div>
+
+<link    rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  
+  <script type="text/javascript">
+
+VanillaTilt.init(document.querySelectorAll(".post-parent"), {
+    max: 2,
+    speed: 2
+});
+
+function likefun(id){
+    
+    var likeid = ".like-form-" + id;
+    $(likeid).trigger('submit');
+    
+}
+
+</script>
+

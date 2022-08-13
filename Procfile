@@ -1,0 +1,1 @@
+web: gunicorn pyBlogger.wsgi --log-file -

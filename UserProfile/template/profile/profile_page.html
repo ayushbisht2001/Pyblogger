@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+ 
+{% block content %}
+
+<div class="container mt-5">
+
+<div class = "row justify-content-center " id ="profile-style" >
+ 
+  <div class="col-lg-4  flex-3 p-1"> 
+    
+    <div class="row  detail_profile p-0">
+      {% include 'profile/profile_card.html' with profile=blogger %}
+    </div>
+  </div>
+  <div class="col-md-12 col-lg-8 p-0 mb-3 mt-5">
+      <div class="card bg-dark text-white border-info p-0 blog-card shadow ">
+        <div class= "card-body position-relative border-info mb-12 pd-2">
+          {% load bootstrap_tags %}
+          <form  method = 'POST' action=''  enctype = 'multipart/form-data'>
+            {% csrf_token %}     
+            <!-- {{ form|as_bootstrap }}       -->
+           
+           {{form.non_field_errors}}
+            <div class = "profile-root-inner"> 
+              <ul class="profile-form-field">                        
+                    
+                <li>
+                  <ul>  
+                                      
+                       {% if form.user_fname.errors %}                            
+                       <li>{{form.user_fname.errors}}</li>      
+                       {% endif %}
+                       <li><label for="{{ form.user_fname.id_for_label}}">First Name</label></li>                       
+                        <li>{{form.user_fname}}</li>
+                      </ul>  
+                </li> 
+
+                    <li>
+                      <ul>                
+                        {% if form.user_lname.errors %}                            
+                        <li>{{form.user_lname.errors}}</li>      
+                        {% endif %}
+                        <li><label for="{{ form.user_lname.id_for_label}}">Last Name</label></li>                          
+                          <li>{{form.user_lname}}</li>
+                          </ul>  
+                    </li> 
+
+                    <li>
+                      <ul>   
+                            {% if form.username.errors %}                            
+                                <li>{{form.username.errors}}</li>      
+                              {% endif %}
+                            <li><label for="{{ form.username.id_for_label}}">Username</label></li>
+                            <li>{{form.username}}</li>
+                      </ul>  
+                    </li> 
+
+                    <li>
+                      <ul>           
+                        {% if form.user_email.errors %}     
+                          <li>{{form.user_email.errors}}</li>
+                        {% endif %} 
+                          <li><label for="{{form.user_email.id_for_label}}"> Email</label></li>
+                        <li>{{form.user_email}}</li>
+                      </ul>  
+                    </li>
+                                  
+                    <li>
+                      <ul>    
+                        {% if form.user_avatar.errors %}     
+                          <li>{{form.user_avatar.errors}}</li>
+                        {% endif %}             
+                           <li><label for="{{form.user_avatar.id_for_label}}">Avatar</label></li>
+                           <li>{{form.user_avatar}}</li>
+                        </ul>  
+                      </li> 
+
+                    <li>
+                      <ul>    
+                        {% if form.user_bio.errors %}     
+                          <li>{{form.user_bio.errors}}</li>
+                        {% endif %}           
+                           <li><label for="{{form.user_bio.id_for_label}}"> Bio</label></li>                         
+                            <li>{{form.user_bio}}</li>
+                        </ul>  
+                    </li>
+                    
+                    
+                    <li>
+                      <ul>                
+                        {% if form.user_work.errors %}     
+                        <li>{{form.user_work.errors}}</li>
+                        {% endif %}           
+                         <li><label for="{{form.user_work.id_for_label}}">Work</label></li>
+                           <li>{{form.user_work}}</li>
+                          </ul>  
+                      </li> 
+
+                      <li>
+                        <ul>                
+                          {% if form.user_edu.errors %}     
+                          <li>{{form.user_edu.errors}}</li>
+                          {% endif %}           
+                           <li><label for="{{form.user_edu.id_for_label}}">Education</label></li>                           
+                             <li>{{form.user_edu}}</li>
+                            </ul>  
+                        </li> 
+    
+                                    
+                    <li>
+                      <ul>                
+                        {% if form.user_website.errors %}     
+                        <li>{{form.user_website.errors}}</li>
+                        {% endif %}           
+                         <li><label for="{{form.user_website.id_for_label}}"> Website</label></li>
+                          <li>{{form.user_website}}</li>
+                          </ul>  
+                      </li> 
+
+                      <li>
+                        <ul>                
+                          {% if form.user_location.errors %}     
+                          <li>{{form.user_location.errors}}</li>
+                          {% endif %}   
+                          <li><label for="{{form.user_location.id_for_label}}">Location</label></li>
+                          <li>{{form.user_location}}</li>
+                              </ul>  
+                      </li>
+
+                      <li>                
+                      <button type ="submit" class = "btn btn-block text-- btn-success"> Save</button>
+                      </li>
+                   
+                </ul>
+            </div> 
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 flex-3"></div>
+</div>
+</div> 
+
+<script>
+
+$(".errorlist").addClass("alert alert-danger alert-dismissible fade show");
+
+</script>
+
+{% endblock %}

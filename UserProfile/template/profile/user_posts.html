@@ -1,0 +1,15 @@
+<div class="posts-root">
+  <div class="box posts"> 
+    <h4 class="text-light">More from <a href="">{{more_posts.user}}</a></h4> 
+         <br/> <hr class="bg-primary"/>
+     <br/> 
+      {% for posts in more_posts.get_posts %}
+    <a href="/blog/{{posts.slug}}">
+      <div class="posts-inner">
+        <h5>{{posts.title}}</h5>
+        <small>{{posts.publish_date}}</small>
+      </div>
+    </a>
+    {% endfor %}
+  </div>     
+</div>

@@ -1,0 +1,140 @@
+:root{
+
+    --boat_size: 100vw;
+    --light-size: 100vmin;
+    
+}
+
+.boat{
+    position: absolute;
+    bottom: 4%;
+    width: calc(var(--boat_size) / 4 );
+    height: calc(var(--boat_size) / 4);
+    left: 0%;
+    background :  url("/static/woodTexture.jpg") ,  linear-gradient(90deg, rgba(15, 15, 15, 0.685), rgba(145, 98, 10, 0.7));   
+    clip-path: polygon(13% 96%,83% 95%,96% 57%,7% 78%);
+    animation: floatboat 30s linear infinite , float 5s linear infinite;
+    /* filter: drop-shadow(15px 15px 140px #ffffff) !important;
+    box-shadow: 10px 10px 120px #d1d5d8;     */
+}
+
+
+
+.lighthouse{
+
+    position: absolute;
+    bottom: 0;
+    width: 30%;
+    clip-path: polygon(89% 5%,100% 5%,100% 100%,35% 100%);
+    height: calc( var(--light-size) );
+    background: linear-gradient(180deg, rgb(90, 88, 88), rgb(25, 23, 26));
+    right: 0%;
+    
+}
+
+.lighthouse:after{
+    content: "";
+
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    /* background-color: rgba(76, 231, 197, 0.493); */
+    top: 0;
+    border-radius: 50%;
+
+}
+.light-shad{   
+    position: absolute;
+    right: 0;
+    top: -5%;      
+    width: 3.4%;
+    height: 10%;
+    z-index: 12;    
+    filter: drop-shadow(-3px 10px 60px rgb(24, 161, 224)); 
+    /* background-color: aquamarine; */
+}
+
+
+.light{
+    position: absolute;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(30deg, rgb(3, 46, 71), rgb(22, 21, 21));   
+    /* border-top-left-radius : 40%; */
+    box-shadow: 10px 10px 100px rgb(26, 191, 233);
+    filter: drop-shadow(-50px -10px 10px rgb(243, 231, 62));
+    clip-path: polygon(50% 0%,70% 15%,71% 16%,87% 30%,90% 33%,100% 42%,100% 100%,65% 100%,65% 65%,35% 65%,35% 100%,0% 100%,0% 40%);
+}
+
+.light:after{
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40%;   
+
+}
+
+.sun-moon{
+
+    position:absolute;
+    top: 0;
+    width: calc( var(--boat_size) / 7);
+    height: calc( var(--boat_size) / 7);
+    border-radius: 50%;
+    background: linear-gradient(-120deg, rgba(250, 255, 255, 0.5), rgba(161, 155, 155, 0.705)) , url("/static/moonTexture.jpg");
+    /* filter: drop-shadow(-10px -10px 10px rgb(229, 229, 226)); */
+    box-shadow: -4px 5px 10px  rgb(229, 229, 226) ;
+    animation : shine 400s linear infinite;
+}
+
+.sun-moon:after{
+    content: "";
+    background-color:#273036;
+    position: absolute;
+    width: 100%;
+    height:100%;
+    border-radius: 50%;
+    left: 90%;
+    top: -42%;
+    animation : moon-cutter 400s linear infinite;
+}
+
+@keyframes shine{
+
+    50%{
+        box-shadow: -15px 10px 20px rgb(229, 229, 226);
+    }
+}
+@keyframes moon-cutter{
+
+    50%{
+
+        left: 0;
+        top:0;
+    }
+
+    
+}
+
+@keyframes float{
+
+    25%{
+        transform: rotate(-10deg);
+    }
+     50%{
+         transform: rotate(10deg);     
+     }
+
+  
+}
+
+@keyframes floatboat{
+
+    50%{
+        left: 60%;
+
+    }
+
+}

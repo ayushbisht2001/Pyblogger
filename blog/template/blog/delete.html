@@ -1,0 +1,298 @@
+{% extends "base.html" %}
+
+
+{% block head_title %}
+delete-post
+{% endblock %}
+{% block content %}
+
+<style>
+
+:root{
+	--siz : calc( vw / 50 * vh / 50 );
+	--midd: 5;
+	--trash-color: #c7ba02;
+	--trash-color2: #bd3333;
+}
+
+.hexa-root{
+    position: relative;
+    width: 100%;
+    height: 100%;
+	overflow:hidden;
+    background-color: rgb(18, 1, 19);
+	padding: 3%;
+	--high: 100vh;
+	/* background-color: #cc4598f5; */
+	
+
+}
+
+.hexa-box{
+	display: block;
+	position: relative;
+	width: 100%;
+    height: calc( var(--high) - var(--high) / 5 );
+    background-color: rgb(18, 1, 19);
+	overflow:hidden;
+	left: 1%;
+}
+
+.hexagon, .even, .odd{
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    transition: 0.5s;
+}
+
+.hexagon:hover{
+    transform: scale(0.7);    
+}
+
+ polygon{
+
+fill: #09df9836;
+}
+
+.hexagon:nth-child( 2n) polygon{
+
+fill:rgb(5, 170, 170);
+
+}
+.hexagon:nth-child(2n) polygon:hover{
+	fill:rgb(240, 243, 245);
+}
+
+
+
+
+polygon:hover{
+    fill: var(--trash-color);      
+}
+
+
+
+.del-main{
+	position: absolute;
+	--size_h: 100vw;
+	--size_v: 100vh;
+	left: calc( var(--size_h) / 2 - 60px);
+	top: calc( var(--size_v) / 2 - 100px );
+	/* background-color: var(--trash-color); */
+	width : 120px;
+	height: 120px; 
+}
+
+.del-main:before{
+	position: relative;
+	width: 200px;
+	height: 200px;
+	background-color: rgb(66, 6, 78);
+	z-index: 1000;
+}
+
+.delete-post{
+	position: absolute;
+	width: auto;
+	height: auto;
+	left: 20%;
+	top: 20%;
+	background-color: transparent;
+	outline: none;
+	border-color: transparent;
+	outline-style: none;
+	outline-color: transparent;
+}
+
+.delete-post:focus{
+	outline: none;
+}
+
+
+
+
+section {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+
+.trash {
+	background:var(--trash-color);
+	width: 66px;
+	height: 80px;
+	display: inline-block;
+	margin:0 auto;	
+	position: relative;
+	-webkit-border-bottom-right-radius: 6px;
+	-webkit-border-bottom-left-radius: 6px;
+	-moz-border-radius-bottomright: 6px;
+	-moz-border-radius-bottomleft: 6px;
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+}
+
+.trash:after {	
+	position: absolute;
+	left: -99px;
+	right: 0;
+	bottom: -50px;
+	width: 300px;
+}
+
+.trash span {
+	position: absolute;
+	height: 12px;
+	background: var(--trash-color);
+	top: -19px;
+	left: -10px;
+	right: -10px;	
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	transform: rotate(0deg);
+	transition: transform 250ms;
+	transform-origin: 19% 100%;
+}
+
+.trash span:after {
+	content: '';
+	position: absolute;
+	width: 27px;
+	height: 7px;
+	background: var(--trash-color);
+	top: -10px;
+	
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	transform: rotate(0deg);
+	transition: transform 250ms;
+	transform-origin: 19% 100%;
+	left: 27px;
+}
+
+
+.trash i {
+	position:relative;
+	width: 5px;
+	height:50px;
+	background:#fff;
+	display:block;
+	margin:14px auto;
+	border-radius: 5px;
+}
+
+.trash i:after {
+	content: '';
+	width: 5px;
+	height: 50px;
+	background: #fff;
+	position: absolute;
+	left: -18px;
+	border-radius: 5px;
+}
+
+.trash i:before {
+	content: '';
+	width: 5px;
+	height: 50px;
+	background: #fff;
+	position: absolute;
+	right: -18px;
+	border-radius: 5px;
+}
+
+.delete-post:hover .trash {
+	background: rgb(218, 78, 78);
+
+}
+.delete-post:hover .trash span{
+	background: rgb(209, 76, 76);
+}
+
+.delete-post:hover .trash span:after{
+	background: rgb(204, 79, 79);
+}
+
+.trash:hover span {
+	transform: rotate(-45deg);
+	transition: transform 250ms;
+}
+
+@media (max-width: 340px){
+
+	.hexa-box{
+		margin-left: 5%;
+	}
+}
+
+
+</style>
+
+<div class="hexa-root">
+	<div class="hexa-box">		 
+	</div>
+</div>
+<div class="del-main">
+	<form  name="bin" id= "post-delete-form" method="POST"> {% csrf_token %}
+		<button class="delete-post"  >
+			<section>
+				<span class="trash">
+					<span></span>
+					<i></i>
+				</span>
+			</section> 
+		</button>              
+	</form>		
+</div>
+
+
+<script>	
+	$(".footer-root").remove();
+    var w = document.documentElement.clientWidth ;
+    var h = document.documentElement.clientHeight ;    
+    var size = Math.floor( w/50 * h/50 ) ;
+
+    console.log(size);
+    for(var i=0;i<size;i++){
+    $(".hexa-box").append(`
+    <svg class="hexagon" id = "hexa${i}">
+            <polygon class="poly" points="25,0 0,15 0,35 25,50 50,35 50,15 "  />
+    </svg> `);
+	}
+	$(".main").css({"background": "black"});
+
+	
+
+	$("#post-delete-form").submit( function(event){
+
+		event.preventDefault();
+	$(".delete-post").addClass("animate__animated animate__shakeY");	 
+	
+	$("#hexa0").addClass("animate__animated animate__bounceOutDown");	
+
+	function rfun(i){
+
+		if(i==size)
+		{	$(".delete-post").addClass("animate__animated animate__bounceOut");
+			setTimeout(function(){$("form[name='bin']").submit();},2000);
+			return ;
+				}	else
+		{			
+	setTimeout(function(){ 
+		$(`#hexa${i}`).addClass("animate__animated animate__bounceOutDown");
+		i += 1;
+		rfun(i);
+	}, 5);	} }
+
+	rfun(0);
+
+}	);
+
+</script>
+
+
+{% endblock %}

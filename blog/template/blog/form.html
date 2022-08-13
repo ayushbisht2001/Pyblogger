@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+{{title}}
+{% endblock %}
+{% block content %}
+
+{% load bootstrap_tags %}
+<div class="container  text-light mb-3 ">     
+    <div class="row text-center  mb-3">
+      <div class=" col-12  col-lg-6 mx-auto ">
+      {% if title %}
+      <h2>{{ title }}</h2>      
+   {% endif %}
+     </div>
+    </div> 
+ 
+    <div class="row ">    
+     
+        <div class=" col-12  col-lg-6 mx-auto bg-dark p-3 blog-card shadow p-3 bg-dark ">        
+            <form method = 'POST'  action="."  enctype = 'multipart/form-data' >{% csrf_token %}
+                  <!-- {{ form|as_bootstrap }}       -->
+                {{form.non_field_errors}}
+                <div class = "profile-root-inner"> 
+                  <ul class="profile-form-field">                        
+                        
+                    <li>
+                      <ul>  
+                                          
+                           {% if form.title.errors %}                            
+                           <li>{{form.title.errors}}</li>      
+                           {% endif %}
+                           <li><label for="{{ form.title.id_for_label}}">Title</label></li>                        
+                            <li>{{form.title}}</li>
+                          </ul>  
+                    </li> 
+                           
+    
+                        <li>
+                          <ul>   
+                                {% if form.image.errors %}                            
+                                    <li>{{form.image.errors}}</li>      
+                                  {% endif %}
+                                <li><label for="{{ form.image.id_for_label}}">Image</label></li>                             
+                               <li>{{form.image}}</li>
+                          </ul>  
+                        </li> 
+    
+                        <li>
+                          <ul>           
+                            {% if form.content.errors %}     
+                              <li>{{form.content.errors}}</li>
+                            {% endif %} 
+                              <li><label for="{{form.content.id_for_label}}">Content</label></li>                             
+                              <li>{{form.content}}</li>
+                          </ul>  
+                        </li>
+
+                        <li>
+                          <ul>           
+                            {% if form.publish_date.errors %}     
+                              <li>{{form.publish_date.errors}}</li>
+                            {% endif %} 
+                              <li><label for="{{form.content.id_for_label}}">Publish date</label></li>                             
+                              <li><input type="date" id="start" name="publish_date"   value="2021-07-22"  min="2021-01-01" max="3000-12-31"></li>
+                               
+                          </ul>  
+                        </li>
+
+                        <li>
+                          <button type = "submit" class="btn btn-success" >Send</button>
+                        </li>                                    
+                    </ul>
+                    
+
+                    </div>                
+
+              
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    $(".errorlist").addClass("alert alert-danger");
+
+    
+      
+    
+
+</script>
+{% endblock %}
+

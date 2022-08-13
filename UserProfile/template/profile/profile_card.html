@@ -1,0 +1,67 @@
+
+<div class="pcard ">
+  <div class="box mt-3 ">
+    <div class = "card-bar "></div>
+      <div class="box-inner-1">  
+        <div class="box-inner-1-img">   
+          {% load static %}
+          <a href=""><img src="{{ profile.user_avatar.url }}" class="avatar" ></a>
+        </div>
+      </div>
+      <div class="box-inner-2 text-center text-light mb-2">
+       @{{profile.username}}
+      </div>
+      <div class="box-inner-3">
+        <button href="" class="follow" >follow</button>
+      </div>
+        <div class="user-data">
+            <ul class="user-data-inner">
+              {% if profile.user_bio %}
+              <li>
+                    <div class="key"><strong>Bio</strong></div>
+                    <div class="value">{{profile.user_bio}}</div>
+              </li>
+              {% endif %}
+              
+              {% if profile.user_work %}
+                <li>
+                    <div class="key"> <strong>Work</strong></div>
+                    <div class="value">{{profile.user_work}}</div>
+                </li>
+                {% endif %}
+
+                {% if profile.user_location %}
+                <li>
+                    <div class="key"> <strong>Location</strong></div>
+                    <div class="value">{{profile.user_location}} </div>
+                </li>
+                {% endif %}
+
+                {% if profile.user_edu %}
+                <li>
+                    <div class="key"><strong>Education</strong></div>
+                    <div class="value">{{profile.user_edu}}</div>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+
+      VanillaTilt.init(document.querySelectorAll(".avatar"), {
+          max: 50,
+          speed: 1000
+      });
+
+      VanillaTilt.init(document.querySelectorAll(".box"), {
+          max: 5,
+          speed: 10
+      });
+
+      $(".box-inner-1-img").css({ "background-image": "url('{{profile.user_avatar.url}}')",  "background-size": "contain" ,
+    "background-repeat": "no-repeat", "transform-style": "preserve-3d"});
+
+      
+  </script>
